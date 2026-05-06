@@ -82,7 +82,7 @@ jobs:
         run: docker load -i /tmp/image.tar
 
       - name: Trivy → SARIF (informational)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           input: /tmp/image.tar
           format: sarif
@@ -97,7 +97,7 @@ jobs:
           sarif_file: trivy-results.sarif
 
       - name: Trivy → gate (fails build on HIGH/CRITICAL)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           input: /tmp/image.tar
           trivy-config: trivy.yaml
