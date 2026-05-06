@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+*.tar
+trivy-results.sarif
+sbom.spdx.json

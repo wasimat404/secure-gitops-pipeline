@@ -1,0 +1,33 @@
+# Trivy scan policy. Picked up by `trivy image --config trivy.yaml`.
+#
+# Severity gate: anything HIGH or CRITICAL fails the build.
+# `--ignore-unfixed` keeps the noise floor reasonable — we still see them in
+# the SARIF report, we just don't block on vulns the upstream hasn't patched.
+severity:
+  - CRITICAL
+  - HIGH
+
+# Don't fail on vulns where no fix exists yet (still surfaced in reports).
+ignore-unfixed: true
+
+# Where vulnerability data comes from.
+vulnerability:
+  type:
+    - os
+    - library
+
+# Scan secrets and misconfigs in addition to vulns.
+scan:
+  scanners:
+    - vuln
+    - secret
+    - misconfig
+
+# Exit non-zero if anything matches the severity filter above.
+exit-code: 1
+
+# Output: human-readable to stdout in CI logs; SARIF written separately by the workflow.
+format: table
+
+# Timeout for the whole scan.
+timeout: 10m

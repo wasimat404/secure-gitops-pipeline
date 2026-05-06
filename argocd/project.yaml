@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: secure-gitops
+  namespace: argocd
+spec:
+  description: Project for the secure GitOps demo app
+  # Only allow syncing from this repo.
+  sourceRepos:
+    - https://github.com/OWNER/REPO.git
+  # Only the secure-app namespace, only on the in-cluster destination.
+  destinations:
+    - namespace: secure-app
+      server: https://kubernetes.default.svc
+  # Whitelist resource kinds — denies anything else by default.
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+  namespaceResourceWhitelist:
+    - group: ""
+      kind: ServiceAccount
+    - group: ""
+      kind: Service
+    - group: ""
+      kind: Secret           # ESO writes this; ArgoCD just needs to ignore drift
+    - group: apps
+      kind: Deployment
+    - group: external-secrets.io
+      kind: ExternalSecret

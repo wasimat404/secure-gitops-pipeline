@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: secure-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: secure-gitops
+
+  source:
+    repoURL: https://github.com/OWNER/REPO.git
+    targetRevision: main
+    path: k8s
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: secure-app
+
+  syncPolicy:
+    automated:
+      prune: true        # delete resources removed from Git
+      selfHeal: true     # revert manual kubectl changes
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=false   # we manage the ns explicitly with PSA labels
+      - PrunePropagationPolicy=foreground
+      - ServerSideApply=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+
+  # The Secret created by ESO has live data; ignore it from drift detection.
+  ignoreDifferences:
+    - group: ""
+      kind: Secret
+      name: app-db-credentials
+      jsonPointers:
+        - /data
