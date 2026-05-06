@@ -45,6 +45,9 @@ spec:
                 secretKeyRef:
                   name: app-db-credentials
                   key: password
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
           readinessProbe:
             httpGet:
               path: /readyz
@@ -69,3 +72,6 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: ["ALL"]
+      volumes:
+        - name: tmp
+          emptyDir: {}
