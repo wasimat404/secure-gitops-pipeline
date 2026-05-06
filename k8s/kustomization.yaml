@@ -4,15 +4,18 @@ kind: Kustomization
 namespace: secure-app
 
 resources:
-  - namespace.yaml
-  - serviceaccount.yaml
-  - deployment.yaml
-  - service.yaml
-  - ../vault/external-secret.yaml
+- namespace.yaml
+- serviceaccount.yaml
+- deployment.yaml
+- service.yaml
+- ../vault/external-secret.yaml
 
 # `kustomize edit set image app=...` from CI rewrites this list.
 # The deployment uses image name `app` as the key.
 images:
-  - name: ghcr.io/wasimat404/secure-gitops-pipeline
-    newName: ghcr.io/wasimat404/secure-gitops-pipeline
-    newTag: placeholder
+- name: app
+  newName: ghcr.io/wasimat404/secure-gitops-pipeline
+  newTag: 2f61d49
+- name: ghcr.io/wasimat404/secure-gitops-pipeline
+  newName: ghcr.io/wasimat404/secure-gitops-pipeline
+  newTag: placeholder
