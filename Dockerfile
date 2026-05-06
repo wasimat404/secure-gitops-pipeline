@@ -35,3 +35,4 @@ EXPOSE 8080
 # Distroless python image's entrypoint is /usr/bin/python3, so CMD is just args.
 CMD ["/opt/venv/bin/gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "app:app"]
 
+
