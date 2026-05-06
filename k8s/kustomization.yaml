@@ -15,7 +15,7 @@ resources:
 images:
 - name: app
   newName: ghcr.io/wasimat404/secure-gitops-pipeline
-  newTag: 50817d5
+  newTag: 1043cf1
 - name: ghcr.io/wasimat404/secure-gitops-pipeline
   newName: ghcr.io/wasimat404/secure-gitops-pipeline
   newTag: placeholder
