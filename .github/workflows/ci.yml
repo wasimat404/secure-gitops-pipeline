@@ -100,7 +100,10 @@ jobs:
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           input: /tmp/image.tar
-          trivy-config: trivy.yaml
+          severity: 'CRITICAL,HIGH'
+          ignore-unfixed: true
+          exit-code: '1'
+          format: 'table'
 
   # ──────────────────────────────────────────────────────────────────────────
   # 3. Push + sign + SBOM. Only runs on main, only after scan passes.
