@@ -104,6 +104,7 @@ jobs:
           ignore-unfixed: true
           exit-code: '1'
           format: 'table'
+          trivyignores: '.trivyignore'
 
   # ──────────────────────────────────────────────────────────────────────────
   # 3. Push + sign + SBOM. Only runs on main, only after scan passes.

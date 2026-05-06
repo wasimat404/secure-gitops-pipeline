@@ -1,0 +1,12 @@
+# CVEs accepted with justification.
+# Format: CVE-ID  # justification | accepted-by | review-date
+
+# jaraco.context 5.3.0 → 6.1.0 — path traversal via malicious tar archives.
+# Vulnerable code path is build-tooling only (not invoked at runtime by app code).
+# Tracked for upgrade in next base-image refresh.
+CVE-2026-23949
+
+# wheel 0.45.1 → 0.46.2 — privilege escalation via malicious wheel files.
+# Same context as above — build-time tooling only, not in runtime path.
+# Tracked for upgrade in next base-image refresh.
+CVE-2026-24049
