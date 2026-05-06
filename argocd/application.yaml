@@ -9,7 +9,7 @@ spec:
   project: secure-gitops
 
   source:
-    repoURL: https://github.com/OWNER/REPO.git
+    repoURL: https://github.com/wasimat404/secure-gitops-pipeline.git
     targetRevision: main
     path: k8s
 

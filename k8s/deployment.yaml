@@ -27,7 +27,7 @@ spec:
         - name: app
           # Image tag is rewritten by `kustomize edit set image` in CI.
           # The literal value here is just a placeholder.
-          image: ghcr.io/OWNER/REPO:placeholder
+          image: ghcr.io/wasimat404/secure-gitops-pipeline:placeholder
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

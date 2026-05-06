@@ -13,6 +13,6 @@ resources:
 # `kustomize edit set image app=...` from CI rewrites this list.
 # The deployment uses image name `app` as the key.
 images:
-  - name: ghcr.io/OWNER/REPO
-    newName: ghcr.io/OWNER/REPO
+  - name: ghcr.io/wasimat404/secure-gitops-pipeline
+    newName: ghcr.io/wasimat404/secure-gitops-pipeline
     newTag: placeholder

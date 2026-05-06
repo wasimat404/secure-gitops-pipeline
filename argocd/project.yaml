@@ -7,7 +7,7 @@ spec:
   description: Project for the secure GitOps demo app
   # Only allow syncing from this repo.
   sourceRepos:
-    - https://github.com/OWNER/REPO.git
+    - https://github.com/wasimat404/secure-gitops-pipeline.git
   # Only the secure-app namespace, only on the in-cluster destination.
   destinations:
     - namespace: secure-app
