@@ -8,7 +8,7 @@ resources:
 - serviceaccount.yaml
 - deployment.yaml
 - service.yaml
-- ../vault/external-secret.yaml
+- external-secret.yaml
 
 # `kustomize edit set image app=...` from CI rewrites this list.
 # The deployment uses image name `app` as the key.
